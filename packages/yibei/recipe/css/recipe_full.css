@@ -1,0 +1,162 @@
+.recipe_full
+{
+	width: 750px;
+}
+
+.recipe_full:not(.create) .edit_field
+{
+	display: none;
+}
+
+
+
+.recipe_full header
+{
+	height: 300px;
+	clear: both;
+	display: block;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	background: #cbcbcb;
+	position: relative;
+}
+
+.recipe_full header .title h1
+{
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+
+.recipe_full header .title input[type="text"]
+{
+	border-radius: 2px;
+	text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.6);
+	font-size: 2em;
+	background: rgba(0, 0, 0, 0.2);
+	border: 1px solid rgba(255, 255, 255, 0.3);
+	color: white;
+	font-weight: bold;
+	padding: 2px;
+}
+
+.recipe_full header .title input[type="submit"]
+{
+	float: right;
+}
+
+.recipe_full header .title
+{
+	text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.6);
+	color: white;
+	padding: 5px;
+	background: rgba(0, 0, 0, 0.2);
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+
+.recipe_full header .background_control
+{
+	float: right;
+	position: relative;
+	bottom: 10px;
+}
+
+.recipe_full .title .vary_control, .recipe_full .title .correct_control
+{
+	color: rgba(255, 255, 255, 0.6);
+	float: right;
+	margin-right: 10px;
+	font-size: 11px;
+	line-height: 40px;
+	text-decoration: underline;
+}
+
+.recipe_full .title .vary_control:hover, .recipe_full .title .correct_control:hover
+{
+	color: white;
+	cursor: pointer;
+}
+
+.recipe_full .guide
+{
+	background: white;
+	padding: 15px;
+	border: 1px solid #dbdbdb;
+	border-top: none;
+	font-size: 16px;
+}
+
+.recipe_full .panel
+{
+	float: right;
+}
+
+.recipe_full .ingredients
+{
+	padding: 5px;
+	margin-left: 10px;
+	<?php echo page_css::background('#f8f2d6', '#f9edc9'); ?>
+	box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+	border: 1px solid white;
+	border-radius: 3px;
+	margin-bottom: 20px;
+}
+
+.recipe_full .equipment
+{
+	padding: 5px;
+	margin-left: 10px;
+	<?php echo page_css::background('#f2f2f2', '#fafafa'); ?>
+	border-radius: 2px;
+}
+
+.recipe_full .ingredients ul
+{
+	list-style-type: none;
+	padding: 0px;
+}
+
+.recipe_full .edit_field input[name="amounts[]"]
+{
+	width: 50px;
+}
+.recipe_full .edit_field input[name="commodities[]"]
+{
+	width: 150px;
+}
+
+.recipe_full .preparation_steps
+{
+	padding-left: 40px;
+	width: 380px;
+	font-size: 30px;
+}
+
+.recipe_full .preparation_steps li
+{
+	margin-bottom: 20px;
+}
+
+.recipe_full .preparation_steps div
+{
+	font-size: 14px;
+}
+
+
+.recipe_full .preparation_steps textarea
+{
+	width: 355px;
+	height: 75px;
+}
+
+.recipe_full .preparation_steps li.edit_field:last-child
+{
+	color: grey;
+}
+
+.recipe_full .preparation_steps li.edit_field:last-child textarea
+{
+	border: 1px solid #cbcbcb;
+}
+

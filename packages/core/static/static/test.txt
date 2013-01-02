@@ -1,0 +1,2 @@
+This is a static text file
+it should be accessible via /static/static/test.txt

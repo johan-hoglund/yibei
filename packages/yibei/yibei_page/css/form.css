@@ -1,0 +1,8 @@
+textarea, input[type="text"], input[type="search"], input[type="numeric"]
+{
+	border: 1px solid #ababab;
+	border-radius: 2px;
+	padding: 2px;
+	font-family: verdana, arial;
+}
+

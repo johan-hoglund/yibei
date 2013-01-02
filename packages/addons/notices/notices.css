@@ -1,0 +1,23 @@
+.notice
+{
+	padding: 10px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	margin: 20px;
+	background: rgba(255, 255, 255, 0.4);
+	border: 1px solid white;
+	clear: both;
+}
+
+.notice.success
+{
+	border: 1px solid #567459;
+	background: #cff1d2;
+}
+
+.notice.error
+{
+	background: #eabdbd;
+	border: 1px solid #803d3d;
+	color: #4d0505;
+}

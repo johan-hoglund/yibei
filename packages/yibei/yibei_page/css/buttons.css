@@ -1,0 +1,21 @@
+.button
+{
+	border-radius: 3px;
+	border: 1px solid #ababab;
+	background: grey;
+	color: #232323;
+	padding: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	display: inline;
+	cursor: pointer;
+}
+
+.button.green
+{
+	background: #8ac65a;
+	border: 1px solid #809172;
+}
+
+
+

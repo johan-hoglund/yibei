@@ -1,0 +1,10 @@
+.recipe_edit textarea
+{
+	width: 400px;
+	height: 200px;
+}
+
+.recipe_edit label
+{
+	display: block;
+}

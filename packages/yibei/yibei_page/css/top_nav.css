@@ -1,0 +1,39 @@
+#top_nav
+{
+	<?php echo page_css::background('#3b984d', '#5cc16f'); ?>
+	margin: -10px;
+	padding: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-bottom: 10px;
+
+}
+
+#top_nav, #top_nav a
+{
+	color: white;
+}
+
+#top_nav .logo
+{
+	margin: 0px;
+	float: left;
+}
+
+#top_nav > nav > ul
+{
+	margin: 0px;
+	padding: 0px;
+}
+
+
+#top_nav > nav > ul > li
+{
+	display: block;
+	float: left;
+	margin-left: 30px;
+}
+
+
+
+

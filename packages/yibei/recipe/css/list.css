@@ -1,0 +1,64 @@
+.recipe_list li
+{
+	display: block;
+	background: rgba(255, 255, 255, 0.7);
+	border-radius: 2px;
+	box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.1);
+	width: 250px;
+	height: 200px;
+	float: left;
+	margin-top: 20px;
+	margin-left: 20px;
+	padding: 2px;
+}
+
+
+.recipe_list li img
+{
+	border-top-left-radius: 2px;
+	border-top-right-radius: 2px;
+}
+
+.recipe_list li .text
+{
+	padding: 5px;
+}
+
+.recipe_list li a
+{
+	color: #565656;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.recipe_list li .ingredients
+{
+	color: #ababab;
+	font-size: 12px;
+}
+
+.recipe_list li:hover
+{
+	cursor: pointer;
+	background: white;
+	box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.2);
+	margin-top: -5px;
+	margin-left: -5px;
+	margin-bottom: -25px;
+	margin-right: -25px;
+	width: 300px;
+	height: 250px;
+	z-index: 100;
+	position: relative;
+}
+
+.recipe_list li:hover img
+{
+	width: 300px;
+}
+
+.recipe_list li:hover .text
+{
+	padding-left: 20px;
+	padding-right: 20px;
+}

@@ -1,0 +1,16 @@
+.user_status_bar
+{
+	padding-top: 20px;
+}
+
+.user_status_bar h3
+{
+	display: inline;
+	padding-right: 50px;
+}
+
+.user_status_bar a
+{
+	text-decoration: none;
+	color: black;
+}

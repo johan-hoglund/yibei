@@ -1,0 +1,27 @@
+.standard_form input, .standard_form select, .standard_form textarea
+{
+	display: block;
+	clear: both;
+	margin-bottom: <?php echo MARG; ?>px;
+}
+
+.standard_form input[type="text"], .standard_form textarea
+{
+	border: 1px solid #ababab;
+	border-radius: 2px;
+	padding: 3px;
+}
+
+
+.standard_form .checkbox
+{
+	display: block;
+	clear: both;
+	margin-bottom: <?php echo MARG; ?>px;
+}
+
+.standard_form .checkbox input, .standard_form .checkbox label
+{
+	display: inline;
+}
+
