@@ -38,14 +38,15 @@
 				$pattern = '#/static/([a-zA-Z_\-0-9]*)/(.*)#';
 				if(preg_match($pattern, $uri, $result))
 				{
-					if(is_readable(PATH_PACKAGES . $result[1] . '/static/' . $result[2]))
+					$file = PATH_PACKAGES . 'yibei/' . $result[1] . '/static/' . $result[2];
+					if(is_readable($file))
 					{
 						header('Cache-Control: private, max-age=10800, pre-check=10800');
 						header('Pragma: private');
 						header('Expires: ' . date(DATE_RFC822,strtotime(' 2 day')));
 
 						header('Content-type: ' . fs_tools::content_type($result[2]));
-						readfile(PATH_PACKAGES . $result[1] . '/static/' . $result[2]);
+						readfile($file);
 						return;
 					}
 				}

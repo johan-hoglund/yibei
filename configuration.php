@@ -8,6 +8,8 @@
 	define('DB_CHARSET', 'utf8');
 
 	define('DEBUG_SHOW', false);
+	
+	define('FB_APP_SECRET', '55d39070978b4d6e403ece99ce49be3a');
 
 	define('DEFAULT_USER', 'www-data');
 

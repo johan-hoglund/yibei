@@ -9,7 +9,7 @@
 
 		public function execute($uri)
 		{
-			$this->body = template('404');
+			$this->body = template('404', array('uri' => $uri));
 		}
 	}
 ?>

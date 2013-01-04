@@ -169,7 +169,7 @@
 				$field = static::$fields[$i];
 				$function = 'db_encode_' . $field;
 				$data = (is_callable(array($this, $function))) ? $this->$function() : $this->$field;
-				if($data === null)
+				if($data === null || strlen($data) == 0)
 				{
 					$query .= '`' . $field . '` = NULL';
 				}

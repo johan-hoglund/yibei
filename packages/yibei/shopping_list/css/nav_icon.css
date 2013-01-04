@@ -1,0 +1,52 @@
+#top_nav li.shopping_list
+{
+	position: relative;	
+}
+
+#top_nav li.shopping_list .count
+{
+	display: block;
+	float: right;
+	border: 2px solid white;
+	background: red;
+	box-shadow: 0px 0px 5px rgba(0, 0, 0, 1);
+	color: white;
+	font-weight: bold;
+	padding: 2px;
+	border-radius: 7px;
+	z-index: 50;
+	position: absolute;
+	right: 0px;
+	font-size: 10px;
+	font-family: verdana, arial;
+	line-height: 8px;
+}
+
+#top_nav li.shopping_list .count.empty
+{
+	display: none;
+}
+
+#top_nav li.shopping_list .list_preview
+{
+	position: absolute;
+	background: #F8F2D6;
+	color: black;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+	border: 1px solid rgba(0, 0, 0, 0.5);
+	border: 1px solid white;
+	border-bottom: none;
+	padding: 5px;
+	bottom: 60px;
+	left: 0px;
+	width: 200px;
+	display: none;
+	box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.2);
+}
+
+#top_nav li.shopping_list .list_preview ul
+{
+	margin: 0px;
+}
+

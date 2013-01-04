@@ -42,6 +42,7 @@
 			$types['html'] = 'text/html; charset=utf-8';
 			$types['css'] = 'text/css; charset=utf-8';
 			$types['js'] = 'text/javascript; charset=utf-8';
+			$types['svg'] = 'image/svg+xml';
 			
 			if(isset($types[self::file_extension($filename)]))
 			{

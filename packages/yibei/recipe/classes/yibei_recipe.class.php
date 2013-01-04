@@ -23,8 +23,6 @@
 				$options['primary'] = 1;
 			}
 
-			debug::log($options);
-
 			return parent::fetch($options);
 		}
 

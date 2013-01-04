@@ -46,6 +46,9 @@
 							<?php foreach($recipe->get('Ingredients') AS $entry) : ?>
 								<li>
 									<div class="view_field">
+										<span class="shopping_list_add_item" data-id="<?php echo $entry->get('commodity')->get('id'); ?>" data-title="<?php echo $entry->get('commodity')->get('singular'); ?>">
+											<img src="/static/yibei_page/icons/shopping_cart.svg" height="15" />
+										</span>
 										<span class="amount">
 											<?php echo trim($entry->get('amount'), '0.'); ?>
 											<?php echo $entry->get('unit'); ?>
