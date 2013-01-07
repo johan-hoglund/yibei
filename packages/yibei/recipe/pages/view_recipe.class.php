@@ -30,8 +30,11 @@
 			{
 				throw new NotFoundException();
 			}
-			
-			$this->main_content = $recipe->render_instructions();
+		
+			$same_author_recipes = yibei_recipe::fetch(array('user' => $recipe->get('user'), 'limit' => 4));
+			$list_html = yibei_recipe::render_list($same_author_recipes, array('mode' => 'vertical_minimized'));
+			$this->main_content = $recipe->get('user')->small_profile(array('extra_html' => $list_html));
+			$this->main_content .= $recipe->render_instructions();
 
 		}
 	}

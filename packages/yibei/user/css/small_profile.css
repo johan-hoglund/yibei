@@ -1,0 +1,11 @@
+.user_profile_small
+{
+	padding: 10px;
+	float: left;
+	border: 1px solid #ababab;
+	border-right: none;
+	border-top-left-radius: 5px;
+	margin-top: 50px;
+	background: rgba(229, 239, 216, 0.6);
+	box-shadow: -2px 0px 5px rgba(0, 0, 0, 0.2);
+}

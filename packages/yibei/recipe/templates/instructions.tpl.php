@@ -54,7 +54,9 @@
 											<?php echo $entry->get('unit'); ?>
 										</span>
 										<span class="commodity">
-											<?php echo $entry->get('commodity')->get('singular'); ?>
+											<a href="<?php echo $entry->get('commodity')->get('url'); ?>">
+												<?php echo $entry->get('commodity')->get('singular'); ?>
+											</a>
 										</span>
 									</div>
 									<div class="edit_field">
@@ -88,7 +90,6 @@
 				<ol class="preparation_steps">
 					<?php if(isset($recipe)) : ?>
 						<?php foreach($recipe->get('preparation_steps') AS $step) : ?>
-							<?php debug::log($step); ?>
 							<li>
 								<div class="view_field">
 									<?php echo $step->get('text')->html_safe(); ?>

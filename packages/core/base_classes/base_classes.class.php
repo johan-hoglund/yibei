@@ -35,8 +35,15 @@
 
 	abstract class fetcher extends setget
 	{
+		private $is_lazy = false;
 		protected static $db_name;
 		public static $fields = array();
+
+		public function get($var)
+		{
+			$this->getreal();
+			return parent::get($var);
+		}
 
 		public static function fetch($options = array())
 		{
@@ -123,6 +130,26 @@
 			return $objs;
 		}
 
+		public static function lazy_from_id($id)
+		{
+			$obj = new static();
+			$obj->set('id', $id);
+			$obj->set('lazy', true);
+			return $obj;
+		}
+
+		public function getreal()
+		{
+			if($this->lazy)
+			{
+				$this->lazy = false;
+				$real = static::fetch_single(array('id' => $this->id));
+				foreach(get_object_vars($real) AS $key => $val)
+				{
+					$this->$key = $val;
+				}
+			}
+		}
 		
 		public static function fetch_single($options = array())
 		{
@@ -135,13 +162,9 @@
 			return false;
 		}
 		
-		public function get_url()
-		{
-			return static::$base_url . 'view/' . $this->id;
-		}
-
 		public function save()
 		{
+			$this->getreal();
 			$data = array();
 			foreach(static::$fields AS $fld)
 			{

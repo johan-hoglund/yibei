@@ -62,16 +62,18 @@
 			{
 				throw new Exception('Trying to set null as current user');
 			}
-			debug::log($current);
-			debug::log($_SESSION);
 			self::$current = $current;
 			$_SESSION['user_id'] = $current->get('id');
-			debug::log($_SESSION);
+		}
+
+		public function small_profile($options = array())
+		{
+			$options['user'] = $this;
+			return template('small_profile', $options);
 		}
 
 		public static function current()
 		{
-			debug::log($_SESSION);
 			if(self::$current instanceof User)
 			{
 				return self::$current;

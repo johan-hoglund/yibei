@@ -1,7 +1,7 @@
 <?php
 	class yibei_recipe extends fetcher
 	{
-		public static $fields = array('handle', 'title', 'top_bg', 'primary');
+		public static $fields = array('handle', 'title', 'top_bg', 'primary', 'user_id');
 		public static $db_name = 'Recipies';
 
 		public function __clone()
@@ -24,6 +24,21 @@
 			}
 
 			return parent::fetch($options);
+		}
+
+		public function db_encode_user_id()
+		{
+			return $this->user->get('id');
+		}
+
+		public function db_decode_user_id($id)
+		{
+			$this->user = User::lazy_from_id($id);
+		}
+
+		public function set_user(User $user)
+		{
+			$this->user = $user;
 		}
 
 		public function db_decode_top_bg($data)
@@ -98,9 +113,12 @@
 			return template('edit_form', array('recipe' => $this));
 		}
 
-		public static function render_list($recipes = array())
+		public static function render_list($recipes = array(), $options = array())
 		{
-			return template('list_recipes', array('recipes' => $recipes));
+			$tpl = array();
+			$tpl['recipes'] = $recipes;
+			$tpl['mode'] = isset($options['mode']) ? $options['mode'] : 'standard';
+			return template('list_recipes', $tpl);
 		}
 
 		public function get_url()

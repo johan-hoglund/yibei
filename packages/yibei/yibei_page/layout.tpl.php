@@ -45,31 +45,6 @@
 					<img src="/static/yibei_page/icons/list.svg" width="40" height="40" />
 				</a>
 			</li>
-			<li><a href="/frukost">Frukost</a>
-				<ul>
-
-				</ul>
-			</li>
-			<li><a href="/lunch">Lunch</a>
-				<ul>
-
-				</ul>
-			</li>
-			<li><a href="/mellanmal">Mellanmål</a>
-				<ul>
-
-				</ul>
-			</li>
-			<li><a href="/middag">Middag</a>
-				<ul>
-
-				</ul>
-			</li>
-			<li><a href="/dessert">Dessert</a>
-				<ul>
-
-				</ul>
-			</li>
 			<li>
 				<input type="search" placeholder="Sök" />
 			</li>

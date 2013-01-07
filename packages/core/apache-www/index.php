@@ -71,6 +71,10 @@
 	{
 		foreach($pattern_set AS $regexp => $bid)
 		{
+			if($regexp{0} != '#' && substr($regexp, -1) != '#')
+			{
+				debug::log($regexp . ' ' . $class);
+			}
 			if(preg_match($regexp, $uri))
 			{
 				if($bid > $top_bid && (!method_exists($class, 'accepts') || $class::accepts($uri)))

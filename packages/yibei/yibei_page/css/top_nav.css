@@ -1,6 +1,7 @@
 #top_nav
 {
 	<?php echo page_css::background('#3b984d', '#1d6a2b'); ?>
+	<?php echo page_css::background('#e5efd8', '#edefeb'); ?>
 	padding: 5px;
 	padding-left: 10px;
 	padding-right: 10px;
@@ -16,7 +17,7 @@
 
 #top_nav, #top_nav a
 {
-	color: white;
+	color: #323232;
 }
 
 #top_nav .logo
@@ -37,7 +38,7 @@
 	display: block;
 	float: left;
 	margin-left: 30px;
-	border-right: 1px solid rgba(255, 255, 255, 0.5);
+	border-right: 1px solid rgba(0, 0, 0, 0.2);
 	padding: 5px;
 }
 

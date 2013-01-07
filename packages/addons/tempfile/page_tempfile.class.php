@@ -3,7 +3,7 @@
 	{	
 		public static function get_url_pattern()
 		{
-			return array('bid' => 5, 'regexp' => '#^/temp/.*#');
+			return array('#^/temp/.*#' => 5);
 		}
 		
 		public static function accepts($uri)

@@ -29,8 +29,10 @@
 			}
 			else
 			{
+				$template = array();
 				$this->body .= $this->content;
 				$template['body'] = isset($this->body) ? $this->body : null;
+				$template['title'] = isset($this->title) ? $this->title : '';
 
 				hook::execute('page_render', $this);
 

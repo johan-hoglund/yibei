@@ -4,7 +4,7 @@
 	{
 		public static function  get_url_pattern()
 		{
-			return array('#^/recept/skapa$#' => 10);
+			return array('#^/recept/skapa$#' => 20);
 		}
 		
 		public function execute($uri)

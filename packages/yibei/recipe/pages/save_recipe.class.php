@@ -36,6 +36,7 @@
 				$recipe = new yibei_recipe();
 			}
 
+			$recipe->set_user(User::current());
 			$recipe->data_from_post($_POST);
 			$recipe->save();
 		}

@@ -20,14 +20,17 @@
 			}
 		}
 
-		public function __construct($handle)
+		public function __construct($handle = null)
 		{
-			$this->handle = $handle;
+			if(isset($handle))
+			{
+				$this->handle = $handle;
+			}
 		}
 
 		public function exists()
 		{
-			return (strlen($this->handle) > 0);
+			return (isset($this->handle) && (strlen($this->handle) > 0));
 		}
 
 		public static function load($handle)
@@ -63,6 +66,10 @@
 
 		public function image_url($options = array('w' => 500, 'h' => 400))
 		{
+			if(!isset($options['h']))
+			{
+				$options['h'] = 999;
+			}
 			return '/imagecrop/' . $this->handle . '/' . $this->x1 . '+' . $this->x2 . '_' . $this->y1 . '+' . $this->y2 . '/' . $options['w'] . 'x' . $options['h'] . '.png';
 		}
 
