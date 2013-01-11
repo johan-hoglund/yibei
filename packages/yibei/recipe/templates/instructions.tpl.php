@@ -50,7 +50,7 @@
 											<img src="/static/yibei_page/icons/shopping_cart.svg" height="15" />
 										</span>
 										<span class="amount">
-											<?php echo trim($entry->get('amount'), '0.'); ?>
+											<?php echo $entry->get_readable_amount(); ?>
 											<?php echo $entry->get('unit'); ?>
 										</span>
 										<span class="commodity">
@@ -69,7 +69,7 @@
 						<?php endif; ?>
 						<li class="edit_field">
 							<div>
-								<input type="number" name="amounts[]" />
+								<input type="text" name="amounts[]" />
 								<?php echo Ingredient::units_dropdown('units[]')->render(); ?>
 								<input type="text" name="commodities[]" />
 							</div>

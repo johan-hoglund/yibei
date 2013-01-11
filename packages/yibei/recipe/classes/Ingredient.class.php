@@ -10,9 +10,14 @@
 			return Commodity::fetch_single(array('id' => $this->commodity_id));
 		}
 		
+		public function get_readable_amount()
+		{
+			return round($this->amount, ceil(0-log10($this->amount)) + 2);
+		}
+
 		public static function all_units()
 		{
-			return array('msk', 'tsk', 'cl', 'dl', 'l', 'st', 'g', 'kg');
+			return array('msk', 'tsk', 'cl', 'dl', 'l', 'st', 'g', 'kg', 'klyftor', 'knippen', 'buntar');
 		}
 
 		public static function units_dropdown($name = null)

@@ -1,5 +1,5 @@
 <div class="user_profile_small">
-	<?php debug::log($user); ?>
+	<?php echo $user->render_avatar('x-small'); ?>	
 	<h3><?php echo $user->get('displayname'); ?></h3>
 	<?php if(isset($extra_html)) : ?>
 		<?php echo $extra_html; ?>
