@@ -71,4 +71,5 @@
 <div class="main">
 	<?php echo $main_content; ?>
 </div>
+<div style="clear: both; height: 100px;" />
 <div id="background"></div>
