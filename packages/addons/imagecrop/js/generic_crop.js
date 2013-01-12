@@ -7,8 +7,13 @@ $(document).ready(function() {
 		var i_y2 = $(this).siblings('input.y2');
 		var i_w = $(this).siblings('input.w');
 		var i_h = $(this).siblings('input.h');
+		var i_aspect = $(this).siblings('input.aspect_ratio').val();
 		var preview = $(this).siblings('img.preview');
 		
+		options = {
+			aspectRatio : i_aspect
+		};
+
 		imagecrop_selector(function(imageinfo) {
 			if(imageinfo.handle) {
 				i_handle.val(imageinfo.handle);
@@ -36,7 +41,7 @@ $(document).ready(function() {
 
 			var imgurl = '/imagecrop/' + imageinfo.handle + '/' + imageinfo.x1 + '+' + imageinfo.x2 + '_' + imageinfo.y1 + '+' + imageinfo.y2 + '/' + preview.width() + 'x200.png';
 			preview.attr('src', imgurl);
-		});
+		}, options);
 		return false;
 	});
 });

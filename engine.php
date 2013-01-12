@@ -59,6 +59,11 @@
 		$tryload($name);	
 	}
 
+	if(class_exists('hook'))
+	{
+		hook::execute('engine_all_files_loaded');
+	}
+
 	class package
 	{
 		public static function get_by_backtrace($trace)

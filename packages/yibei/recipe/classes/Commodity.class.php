@@ -1,7 +1,7 @@
 <?php
 	class Commodity extends fetcher
 	{
-		public static $fields = array('singular', 'plural', 'handle');
+		public static $fields = array('singular', 'plural', 'handle', 'parent_commodity_id', 'main_imagecrop_id');
 		protected static $db_name = 'Commodities';
 
 		public function db_encode_handle()
@@ -22,6 +22,42 @@
 				}
 			}
 			return $this->handle;
+		}
+
+		public function save()
+		{
+			$this->get_main_imagecrop()->save();
+			parent::save();
+		}
+
+		public function db_encode_main_imagecrop_id()
+		{
+			return $this->get_main_imagecrop()->get('id');
+		}
+
+		public function get_main_imagecrop()
+		{
+			if(isset($this->main_imagecrop) && $this->main_imagecrop instanceof imagecrop)
+			{
+				return $this->main_imagecrop;
+			}
+
+			$imagecrop = false;
+			if(isset($this->main_imagecrop_id))
+			{
+				$imagecrop = imagecrop::fetch_single(array('id' => $this->main_imagecrop_id));
+			}
+			if(!$imagecrop)
+			{
+				$imagecrop = new imagecrop();
+			}
+
+			$imagecrop->set('aspect_ratio', '16:9');
+			$imagecrop->set('field_name', 'main_imagecrop');
+
+			$this->main_imagecrop = $imagecrop;
+
+			return $imagecrop;
 		}
 
 		public function get_associated_recipes($options = array())
@@ -47,6 +83,11 @@
 			return yibei_recipe::fetch($options);
 		}
 
+		public function is_orphan()
+		{
+			return ($this->parent_commodity_id <= 0);
+		}
+
 		public function get_handle()
 		{
 			if(isset($this->handle) && strlen($this->handle))
@@ -54,6 +95,22 @@
 				return $this->handle;
 			}
 			return $this->id;
+		}
+
+		public function get_parent()
+		{
+			return static::fetch_single(array('id' => $this->parent_commodity_id));
+		}
+
+		public function get_top_ancestor()
+		{
+			$current = $this;
+			while($current->parent_commodity_id > 0)
+			{
+				$current = $current->get_parent();
+			}
+
+			return $current;
 		}
 
 		public static function get_by_name($name)
@@ -76,6 +133,6 @@
 
 		public function get_url()
 		{
-			return '/ingrediens/' . $this->get_handle();
+			return '/ingrediens/' . $this->get_top_ancestor()->get_handle();
 		}
 	}

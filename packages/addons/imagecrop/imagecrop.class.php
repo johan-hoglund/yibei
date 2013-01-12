@@ -1,7 +1,11 @@
 <?php
 	
-	class imagecrop extends setget
+	class imagecrop extends fetcher
 	{
+		protected static $db_name = 'imagecrops';
+		public static $fields = array('handle', 'x1', 'x2', 'y1', 'y2');
+
+
 		public function selector($options = array())
 		{
 			$options['width'] = isset($options['width']) ? $options['width'] : 100;
@@ -18,6 +22,11 @@
 					$this->$key = $postdata[$key];
 				}
 			}
+		}
+
+		public function db_decode_x1($data)
+		{
+			$this->x1 = ($data > 0) ? $data : 0;
 		}
 
 		public function __construct($handle = null)

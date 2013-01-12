@@ -1,7 +1,7 @@
 <fieldset>
 	<legend><?php echo isset($options['heading']) ? $options['heading'] : $crop->get('field_name'); ?></legend>
 	<?php
-		foreach(array('handle', 'x1', 'x2', 'y1', 'y2', 'w', 'h') AS $fld)
+		foreach(array('handle', 'x1', 'x2', 'y1', 'y2', 'w', 'h', 'aspect_ratio') AS $fld)
 		{
 			echo '<input type="hidden" name="' . $crop->get('field_name') . '[' . $fld . ']" class="' . $fld . '" value="' . $crop->get($fld) . '" data-name="' . $fld . '" />';
 		}
