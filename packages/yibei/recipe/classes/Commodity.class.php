@@ -84,7 +84,7 @@
 				$options['id'][] = $d['id'];
 			}
 		
-			debug::log($options);
+			$options['primary'] = 1;	
 
 			return yibei_recipe::fetch($options);
 		}
