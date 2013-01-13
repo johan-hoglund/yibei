@@ -40,7 +40,7 @@ $(document).ready(function() {
 	if($('.recipe_full .preparation_steps'))
 	{
 		window.onbeforeunload = function() {
-			if($('.recipe_full .preparation_steps textarea').length > 1 || $('.recipe_full .ingredients ul li').length > 1)
+			if($('.edit_field').is(':visible') && ($('.recipe_full .preparation_steps textarea').length > 1 || $('.recipe_full .ingredients ul li').length > 1))
 			{
 				return 'Det verkar som att du skriver in ett recept, om du lämnar sidan riskerar du att förlora osparad text. Är du säker på att du vill lämna sidan?';
 			}

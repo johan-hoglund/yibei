@@ -38,6 +38,15 @@
 			</div>
 		</header>
 		<div class="guide">
+			<?php if(user::current()->is_anonymous()) : ?>
+				<div class="edit_field notification warning">
+					<h3>Du är inte inloggad</h3>
+					<p>
+						Om du redigerar recept utan att vara inloggad på Yibei, kommer dina ändringar att ta längre tid att synas, då de granskas först.
+						Dessutom missar du möjligheten att få ditt namn presenterat vid recept och få notiser när någon lagar eller kommenterar ditt recept.
+					</p>
+				</div>
+			<?php endif; ?>
 			<div class="panel">
 				<div class="ingredients">
 					<h4>Ingredienser</h4>

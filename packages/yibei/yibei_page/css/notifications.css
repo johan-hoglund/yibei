@@ -1,0 +1,15 @@
+.notification
+{
+	border-radius: 2px;
+	background: ;
+	border: 1px solid #d9cfb4;
+	padding: 5px;
+	background: #fff7e1 url('http://swat.silverorange.com/demo/packages/swat/images/tango/48/dialog-warning.png') no-repeat left center;
+	padding-left: 60px;
+	font-size: 11px;
+	color: #524e43;
+	clear: both;
+}
+
+
+

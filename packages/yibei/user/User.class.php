@@ -66,6 +66,11 @@
 			$_SESSION['user_id'] = $current->get('id');
 		}
 
+		public function is_anonymous()
+		{
+			return $this->class == 'anonymous';
+		}
+
 		public function small_profile($options = array())
 		{
 			$options['user'] = $this;
