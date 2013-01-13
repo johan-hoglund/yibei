@@ -35,8 +35,17 @@ $(document).ready(function() {
 			var bg = '/imagecrop/' + ic.handle + '/' + ic.x1 + '+' + ic.x2 + '_' + ic.y1 + '+' + ic.y2 + '/750x.png';
 			$(recipe_full).find('header').css('background', 'url("' + bg + '")');
 		}, options);
-		console.log(options);
 	});
+
+	if($('.recipe_full .preparation_steps'))
+	{
+		window.onbeforeunload = function() {
+			if($('.recipe_full .preparation_steps textarea').length > 1 || $('.recipe_full .ingredients ul li').length > 1)
+			{
+				return 'Det verkar som att du skriver in ett recept, om du lämnar sidan riskerar du att förlora osparad text. Är du säker på att du vill lämna sidan?';
+			}
+		}
+	}
 
 	$('.recipe_full .preparation_steps textarea').keyup(function() {
 		console.log($(this).val());
