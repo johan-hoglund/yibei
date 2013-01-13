@@ -4,7 +4,15 @@
 
 		<head>
 			<div class="view_field">
-				<h1><?php echo $commodity->get('singular'); ?></h1>
+				<h1>
+					<?php echo $commodity->get('singular'); ?>
+					<span class="store_group">
+						<?php if($group = $commodity->get_store_group()) : ?>
+							<?php debug::log($group); ?>
+							<?php echo $group->get('title'); ?>
+						<?php endif; ?>
+					</span>
+				</h1>
 			</div>
 			<div class="edit_field">
 				<select name="grammar_article">
@@ -31,13 +39,21 @@
 
 		<div class="head">
 			<div class="short_description">
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus id pulvinar libero. Sed accumsan metus id turpis molestie sed porttitor sem feugiat. Integer lacus erat, eleifend non suscipit nec, mollis ut est. Fusce leo leo, cursus vitae fermentum vel, volutpat ut leo.
-				</p>
+				<div class="view_field">
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus id pulvinar libero. Sed accumsan metus id turpis molestie sed porttitor sem feugiat. Integer lacus erat, eleifend non suscipit nec, mollis ut est. Fusce leo leo, cursus vitae fermentum vel, volutpat ut leo.
+					</p>
 
-				<p>
-					Nullam eros metus, sodales eu tincidunt et, pellentesque aliquam augue. Quisque quis tortor ut tellus tempus consequat. Proin ultrices odio ut orci tempus aliquet. Phasellus placerat luctus ipsum, ut venenatis ipsum fermentum ac.
-				</p>
+					<p>
+						Nullam eros metus, sodales eu tincidunt et, pellentesque aliquam augue. Quisque quis tortor ut tellus tempus consequat. Proin ultrices odio ut orci tempus aliquet. Phasellus placerat luctus ipsum, ut venenatis ipsum fermentum ac.
+					</p>
+					<span class="edit_control">Redigera<span>
+				</div>
+				<div class="edit_field">
+					<textarea></textarea>
+					<input type="submit" value="Spara" />
+				</div>
+
 			</div>
 
 			<div class="image">
@@ -59,4 +75,10 @@
 		<?php endif; ?>
 		<br style="clear: both;" />
 	</form>
+
+	<?php foreach($commodity->get_children() AS $child): ?>
+		<form method="post">
+			<h2><?php echo $child->get('singular'); ?></h2>
+		</form>
+	<?php endforeach; ?>
 </div>

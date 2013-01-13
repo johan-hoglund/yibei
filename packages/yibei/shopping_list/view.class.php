@@ -19,7 +19,6 @@
 					$commodity = Commodity::get_by_name($string);
 					$list->add_commodity($commodity);
 				}
-				debug::log('got new entries');
 			}
 
 

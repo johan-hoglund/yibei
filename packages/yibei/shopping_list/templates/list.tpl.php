@@ -6,9 +6,13 @@
 			<?php foreach($list->items_by_group($group) AS $item) : ?>
 				<li>
 					<?php if($is_owner) : ?>
-						<input type="checkbox" />
+						<input type="checkbox" value="<?php echo $item->get('commodity_id'); ?>" />
 					<?php endif; ?>
-					<span class="commodity"><?php echo $item->get('commodity')->get('singular'); ?></span>
+					<span class="commodity">
+						<a href="<?php echo $item->get('commodity')->get('url'); ?>">
+							<?php echo $item->get('commodity')->get('singular'); ?>
+						</a>
+					</span>
 					<?php if($is_owner) : ?>
 						<span class="remove_control">(<span>x</span>)</span>
 					<?php endif; ?>
@@ -16,16 +20,6 @@
 			<?php endforeach; ?>
 		</ul>
 	<?php endforeach; ?>
-	<?php if(count($orphans = $list->items_by_group(null)) > 0): ?>
-		<h3>Övrigt</h3>
-		<ul>
-			<?php foreach($orphans AS $item) : ?>
-				<li>
-					<?php echo $item->get('commodity')->get('singular'); ?>
-				</li>
-			<?php endforeach; ?>
-		</ul>
-	<?php endif; ?>
 	<?php if($is_owner) : ?>
 		<div class="add_dialogue">
 			<h2>Nya artiklar</h2>

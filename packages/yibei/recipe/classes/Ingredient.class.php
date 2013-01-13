@@ -17,7 +17,7 @@
 
 		public static function all_units()
 		{
-			return array('msk', 'tsk', 'cl', 'dl', 'l', 'st', 'g', 'kg', 'klyftor', 'knippen', 'buntar');
+			return array('msk', 'tsk', 'cl', 'dl', 'l', 'st', 'g', 'kg', 'klyftor', 'knippen', 'buntar', 'krm', 'skivor');
 		}
 
 		public static function units_dropdown($name = null)

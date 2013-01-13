@@ -8,7 +8,7 @@
 	padding: 10px;
 }
 
-.commodity_view h1
+.commodity_view h1, .commodity_view h2
 {
 	font-family: "Crimson Text";
 	text-transform: uppercase;
@@ -21,6 +21,24 @@
 {
 	font-size: 50px;
 }
+
+.commodity_view h2
+{
+	font-size: 30px;
+}
+
+.commodity_view h2:first-letter
+{
+	font-size: 38px;
+}
+
+.commodity_view h1 .store_group
+{
+	font-size: 30px;
+	color: #bababa;
+	padding-left: 25px;
+}
+
 
 .commodity_view .head .short_description
 {
@@ -45,5 +63,13 @@
 {
 	display: none;
 }
+
+.commodity_view .short_description .edit_control
+{
+	cursor: pointer;
+	color: #4b5d80;
+	text-decoration: underline;
+}
+
 
 

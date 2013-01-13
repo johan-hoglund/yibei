@@ -24,6 +24,12 @@
 			return $this->handle;
 		}
 
+
+		public function get_store_group()
+		{
+			return CommodityStoreGroup::fetch_by_commodity($this);
+		}
+
 		public function save()
 		{
 			$this->get_main_imagecrop()->save();
@@ -83,6 +89,11 @@
 			return yibei_recipe::fetch($options);
 		}
 
+		public function get_children()
+		{
+			return static::fetch(array('parent_commodity_id' => $this->id));
+		}
+
 		public function is_orphan()
 		{
 			return ($this->parent_commodity_id <= 0);
@@ -133,6 +144,12 @@
 
 		public function get_url()
 		{
-			return '/ingrediens/' . $this->get_top_ancestor()->get_handle();
+			$url = '/ingrediens/' . $this->get_top_ancestor()->get_handle();
+			if(!$this->is_orphan())
+			{
+				$url .= '#' . $this->get_handle();
+			}
+
+			return $url;
 		}
 	}

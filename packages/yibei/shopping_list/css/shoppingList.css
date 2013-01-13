@@ -22,6 +22,21 @@
 	cursor: pointer;
 }
 
+.ShoppingList ul
+{
+	list-style-type: none;
+	padding: 0px;
+}
+
+.ShoppingList ul li.checked
+{
+	color: #ababab;
+	font-size: 11px;
+}
 
 
+.ShoppingList ul li.checked input[type="checkbox"]
+{
+	opacity: 0.5;
+}
 
