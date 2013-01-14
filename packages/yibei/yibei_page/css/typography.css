@@ -1,0 +1,48 @@
+a, a:visited, .link
+{
+	color: <?php echo YIBEI_LINK_COLOR; ?>;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+body
+{
+	font-family: 'Noticia Text', georgia, sans-serif;
+	font-size: 14px;
+}
+
+h1, h2, h3, .heading
+{
+	text-transform: uppercase;
+	font-family: "Crimson Text", Georgia;
+	font-weight: normal;
+}
+
+h1:first-letter, h2:first-letter, h3:first-letter, .heading:first-letter
+{
+	font-size: 1.2em;
+}
+
+.heading
+{
+	display: inline-block;
+}
+
+h1, h2, h3
+{
+	margin-top: 0;
+}
+
+h2
+{
+	font-size: 30px;
+}
+
+h1
+{
+	font-size: 40px;
+	border-bottom: 1px dotted #dcdcdc;
+}
+
+
+

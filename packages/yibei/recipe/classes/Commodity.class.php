@@ -138,6 +138,7 @@
 			}
 			$commodity = new Commodity();
 			$commodity->set('singular', $name);
+			$commodity->set('plural', $name);
 			$commodity->save();
 			return $commodity;
 		}

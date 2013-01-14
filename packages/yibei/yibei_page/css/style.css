@@ -18,6 +18,13 @@ body
 	background-attachment: fixed;
 }
 
+body.narrow
+{
+	padding: 0;
+}
+
+
+
 #background
 {
 	position: fixed;
@@ -33,4 +40,15 @@ body
 div.main
 {
 	padding-bottom: 100px;
+}
+
+
+.main .page
+{
+	background: rgba(255, 255, 255, 0.85);
+	border-top: 1px solid white;
+	border-left: 1px solid white;
+	border-right: 1px solid rgba(0, 0, 0, 0.2);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+	padding: 10px;
 }

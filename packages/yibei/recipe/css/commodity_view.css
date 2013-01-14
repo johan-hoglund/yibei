@@ -1,36 +1,3 @@
-.commodity_view
-{
-	background: rgba(255, 255, 255, 0.85);
-	border-top: 1px solid white;
-	border-left: 1px solid white;
-	border-right: 1px solid rgba(0, 0, 0, 0.2);
-	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-	padding: 10px;
-}
-
-.commodity_view h1, .commodity_view h2
-{
-	font-family: "Crimson Text";
-	text-transform: uppercase;
-	font-weight: normal;
-	font-size: 40px;
-	border-bottom: 1px dotted #dcdcdc;
-}
-
-.commodity_view h1:first-letter
-{
-	font-size: 50px;
-}
-
-.commodity_view h2
-{
-	font-size: 30px;
-}
-
-.commodity_view h2:first-letter
-{
-	font-size: 38px;
-}
 
 .commodity_view h1 .store_group
 {
@@ -49,14 +16,10 @@
 	column-count:2;
 }
 
-.commodity_view .head .image
-{
-	float: left;
-}
 
-.commodity_view .head .image img
+.commodity_view .Picture img
 {
-	border: 1px solid #efefef;
+	width: 100%;
 }
 
 .commodity_view .edit_field

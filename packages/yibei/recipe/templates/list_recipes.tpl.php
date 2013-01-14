@@ -7,7 +7,7 @@
 				</div>
 			<?php endif; ?>
 			<div class="text">
-				<a href="<?php echo $recipe->get_url(); ?>"><?php echo $recipe->get('title'); ?></a>
+				<a href="<?php echo $recipe->get_url(); ?>" class="heading"><?php echo $recipe->get('title'); ?></a>
 				<span class="ingredients">
 					<?php echo ucfirst(implode(', ', array_map(function($a) { return $a->get('commodity')->get('singular'); }, array_slice($recipe->get('Ingredients'), 0, 4)))); ?>
 				</span>
