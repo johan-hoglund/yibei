@@ -1,7 +1,6 @@
 #top_nav
 {
-	<?php echo page_css::background('#3b984d', '#1d6a2b'); ?>
-	<?php echo page_css::background('#e5efd8', '#edefeb'); ?>
+	<?php echo page_css::background('#ededed', '#f3f3f3'); ?>
 	padding: 5px;
 	padding-left: 10px;
 	padding-right: 10px;
@@ -11,7 +10,7 @@
 	left: 0px;
 	right: 0px;
 	border-top: 1px solid rgba(255, 255, 255, 0.7);
-	box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.3);
+	box-shadow: 0px -3px 5px rgba(0, 0, 0, 0.2);
 
 }
 

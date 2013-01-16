@@ -2,7 +2,7 @@
 	class User extends fetcher
 	{
 		private static $current;
-		public static $fields = array('displayname', 'fb_id', 'created_at', 'picture_url', 'create_method', 'class');
+		public static $fields = array('displayname', 'fb_id', 'created_at', 'picture_url', 'create_method', 'class', 'persistent_token');
 		protected static $db_name = 'Users';
 
 		public function db_encode_created_at()
@@ -56,6 +56,16 @@
 			throw new Exception('FB user not found');
 		}
 
+		protected function db_encode_persistent_token()
+		{
+			return $this->persistent_token();
+		}
+
+		private function persistent_token()
+		{
+			return sha1($this->id . 'This salt should be moved somewhere else :)');
+		}
+
 		public static function set_current(User $current)
 		{
 			if(!isset($current))
@@ -64,6 +74,8 @@
 			}
 			self::$current = $current;
 			$_SESSION['user_id'] = $current->get('id');
+		
+			setcookie('yibei_persistent_token', $current->persistent_token(), time()+86400*365, '/', null, false, true);
 		}
 
 		public function is_anonymous()
@@ -88,6 +100,13 @@
 				if(self::$current = self::fetch_single(array('id' => $_SESSION['user_id'])))
 				{
 					return self::$current;
+				}
+			}
+			if(isset($_COOKIE['yibei_persistent_token']))
+			{
+				if(self::$current = self::fetch_single(array('persistent_token' => $_COOKIE['yibei_persistent_token'])))
+				{
+					return self::$current();
 				}
 			}
 
