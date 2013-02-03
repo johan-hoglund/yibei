@@ -9,12 +9,14 @@
 						<input type="checkbox" value="<?php echo $item->get('commodity_id'); ?>" />
 					<?php endif; ?>
 					<span class="commodity">
+						<?php echo $item->get('amount'); ?>
+						<?php echo $item->get('unit'); ?>
 						<a href="<?php echo $item->get('commodity')->get('url'); ?>">
 							<?php echo $item->get('commodity')->get('singular'); ?>
 						</a>
 					</span>
 					<?php if($is_owner) : ?>
-						<span class="remove_control">(<span>x</span>)</span>
+						<span class="remove_control"><span>x</span></span>
 					<?php endif; ?>
 				</li>
 			<?php endforeach; ?>

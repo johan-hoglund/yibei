@@ -11,6 +11,12 @@ $(document).ready(function() {
 		$(this).closest('form').find('input[name="edit_mode"]').val('correct');
 	});
 
+	$('.recipe_full .cancel_control').click(function() {
+		$(this).closest('.recipe_full').find('.view_field').show(250);
+		$(this).closest('.recipe_full').find('.edit_field').hide();
+		return false;
+	});
+
 	$('.recipe_full .background_control .button').click(function() {
 		var recipe_full = $(this).closest('.recipe_full');
 		var i_handle = $(this).siblings('input[name="bg_handle"]');

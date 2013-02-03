@@ -1,0 +1,24 @@
+.RecipeIngredientList
+{
+	<?php echo page_css::background('#f8f2d6', '#f9edc9'); ?>
+	padding: 5px;
+	margin-bottom: 10px;
+}
+
+.RecipeIngredientListTemplate
+{
+	display: none;
+}
+
+.RecipeIngredientList table input
+{
+	width: 75px;
+}
+
+
+.RecipeIngredientList .amount
+{
+	text-align: right;
+}
+
+

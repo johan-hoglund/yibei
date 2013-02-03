@@ -18,9 +18,6 @@
 			{
 				if(!$commodity = Commodity::fetch_single(array('id' => $matches[1])))
 				{
-					debug::log(Commodity::fetch_single(array('id' => $matches[1])));
-					debug::log($commodity);
-					debug::log($matches);
 					throw new NotFoundException();
 				}
 			}
@@ -32,7 +29,6 @@
 
 			if(isset($_POST) && isset($_POST['action']))
 			{
-				debug::log($_POST);
 				$commodity->get('main_imagecrop')->update_from_postdata($_POST['main_imagecrop']);
 				$commodity->save();
 			}

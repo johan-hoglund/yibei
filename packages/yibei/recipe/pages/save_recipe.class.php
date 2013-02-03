@@ -1,5 +1,4 @@
 <?php
-	$script_count = 1;
 	class create_recipe extends yibei_page
 	{
 		public static function  get_url_pattern()
@@ -9,14 +8,9 @@
 		
 		public function execute($uri)
 		{
-			global $script_count;
-
-			debug::log('Script count: ' . $script_count);
-			$script_count++;
-
 			if(isset($_POST['parent_recipe']))
 			{
-				if(!$parent = yibei_recipe::fetch_single(array('id' => $_POST['parent_recipe'])))
+				if(!$parent = Recipe::fetch_single(array('id' => $_POST['parent_recipe'])))
 				{
 					throw new NotFoundException('The source recipe does not exist');
 				}
@@ -33,11 +27,18 @@
 			}
 			else
 			{
-				$recipe = new yibei_recipe();
+				$recipe = new Recipe();
+			}
+
+			if(!isset($_POST))
+			{
+				throw new Exception('Tried to create new recipe without postdata');
 			}
 
 			$recipe->set_user(User::current());
 			$recipe->data_from_post($_POST);
 			$recipe->save();
+
+			$this->redirect = $recipe->get('url');
 		}
 	}

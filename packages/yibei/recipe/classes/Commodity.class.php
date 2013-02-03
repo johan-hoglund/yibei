@@ -24,6 +24,15 @@
 			return $this->handle;
 		}
 
+		public function get_singular()
+		{
+			return (strlen($this->singular) > 0) ? $this->singular : $this->plural;
+		}
+
+		public function get_plural()
+		{
+			return (strlen($this->plural) > 0) ? $this->plural : $this->singular;
+		}
 
 		public function get_store_group()
 		{
@@ -72,7 +81,7 @@
 	
 			// Horrible logic must be done in SQL. This is in effect joining done in php :(
 			$q = 'SELECT r.id 
-				FROM Recipies AS r, Ingredients AS i, RecipeIngredients AS ri
+				FROM Recipes AS r, Ingredients AS i, RecipeIngredients AS ri
 				WHERE r.id = ri.recipe_id
 				AND ri.ingredient_id = i.id
 				AND i.commodity_id = "' . $this->id . '"
@@ -86,7 +95,7 @@
 		
 			$options['primary'] = 1;	
 
-			return yibei_recipe::fetch($options);
+			return Recipe::fetch($options);
 		}
 
 		public function get_children()

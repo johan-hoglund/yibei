@@ -26,13 +26,13 @@
 				throw new NotFoundException();
 			}
 
-			if(!$recipe = yibei_recipe::fetch_single(array('handle' => $matches[1])))
+			if(!$recipe = Recipe::fetch_single(array('handle' => $matches[1])))
 			{
 				throw new NotFoundException();
 			}
 		
-			$same_author_recipes = yibei_recipe::fetch(array('user' => $recipe->get('user'), 'limit' => 4));
-			$list_html = yibei_recipe::render_list($same_author_recipes, array('mode' => 'vertical_minimized'));
+			$same_author_recipes = Recipe::fetch(array('user' => $recipe->get('user'), 'limit' => 4));
+			$list_html = Recipe::render_list($same_author_recipes, array('columns' => 3));
 			$this->main_content = $recipe->get('user')->small_profile(array('extra_html' => $list_html));
 			$this->main_content .= $recipe->render_instructions();
 

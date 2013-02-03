@@ -9,7 +9,7 @@
 		
 		public function execute($uri)
 		{
-			$this->main_content = yibei_recipe::render_create_form();
+			$this->main_content = Recipe::render_create_form();
 		}
 	}
 

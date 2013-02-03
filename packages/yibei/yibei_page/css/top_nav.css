@@ -1,17 +1,11 @@
 #top_nav
 {
-	<?php echo page_css::background('#ededed', '#f3f3f3'); ?>
-	padding: 5px;
-	padding-left: 10px;
-	padding-right: 10px;
 	position: fixed;
-	height: 60px;
 	bottom: 0px;
 	left: 0px;
 	right: 0px;
-	border-top: 1px solid rgba(255, 255, 255, 0.7);
 	box-shadow: 0px -3px 5px rgba(0, 0, 0, 0.2);
-
+	border: 1px solid green;
 }
 
 #top_nav, #top_nav a
@@ -25,10 +19,19 @@
 	float: left;
 }
 
+#top_nav > nav
+{
+	color: white;
+	<?php echo page_css::background('#018901', '#02a703'); ?>
+	border-top: 1px solid #169915;
+	box-shadow: 0px -3px 5px rgba(0, 0, 0, 0.2);
+
+}
+
 #top_nav > nav > ul
 {
-	margin: 0px;
-	padding: 0px;
+	margin: 0;
+	padding: 0;
 }
 
 
@@ -39,6 +42,118 @@
 	margin-left: 30px;
 	border-right: 1px solid rgba(0, 0, 0, 0.2);
 	padding: 5px;
+}
+
+#top_nav > nav > ul > li a
+{
+	text-decoration: none;
+}
+
+#top_nav > nav > ul > li a .label
+{
+	color: white;
+	display: block;
+	font-size: 11px;
+}
+
+#top_nav .filters
+{
+	color: white;
+	<?php echo page_css::background('rgba(3, 71, 194, 0.8)', 'rgba(0, 90, 200, 0.8)'); ?>
+}
+
+#top_nav .filters .minimize_control
+{
+	display: block;
+	float: right;
+	font-size: 16px;
+	margin-right: 10px;
+	cursor: pointer;
+}
+
+#top_nav .recipe_search_control .filters ul
+{
+	margin: 0;
+}
+
+#top_nav .recipe_search_control .filters ul li
+{
+	display: block;
+	float: left;
+}
+
+
+
+#top_nav .browser
+{
+	box-shadow: 0px -3px 5px rgba(0, 0, 0, 0.2);
+	<?php echo page_css::background('rgba(3, 71, 194, 0.95)', 'rgba(0, 90, 200, 0.95)'); ?>
+	border-top: 1px solid #1b6ad1;
+	color: white;
+	height: 250px;
+}
+
+#top_nav .recipe_search_control.disabled
+{
+	display: none;
+}
+
+#top_nav .browser .wrapper
+{
+	float: left;
+	margin-left: 10px;
+	margin-right: 10px;
+	width: 169px;
+	overflow-y: hidden;
+	height: 100%;
+	font-size: 12px;
+}
+
+#top_nav .browser .wrapper ul
+{
+	padding: 0;
+	margin: 0;
+}
+
+#top_nav .browser .wrapper ul li
+{
+	display: block;
+	float: left;
+	border: 1px solid #1b6ad1;
+	padding: 2px;
+	margin-top: 7px;
+	cursor: pointer;
+	text-align: center;
+	width: 75px;
+	height: 55px;
+}
+
+#top_nav .browser .wrapper ul li.view_more
+{
+	border: 1px solid transparent;
+	line-height: 55px;
+}
+
+#top_nav .browser .wrapper ul li:nth-child(2n)
+{
+	margin-left: 5px;
+}
+
+#top_nav .browser .wrapper ul li img
+{
+	display: block;
+}
+
+#top_nav .browser .wrapper ul li a
+{
+	color: white;
+	text-decoration: none;
+}
+
+
+#top_nav .browser .wrapper ul li:hover
+{
+	background: rgba(255, 255, 255, 0.3);
 }
 
 

@@ -1,22 +1,32 @@
-
+.recipe_list.standard
+{
+	padding: 0;
+	margin: 0;
+}
 .recipe_list.standard li
 {
 	display: block;
 	background: rgba(255, 255, 255, 0.7);
 	border-radius: 1px;
 	box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.1);
-	width: 250px;
-	height: 200px;
 	float: left;
-	margin-top: 20px;
-	margin-left: 20px;
-	padding: 5px;
+	cursor: pointer;
+}
+
+.recipe_list.standard li .spacer
+{
+	padding: 1px;
+}
+
+
+.recipe_list.standard li a
+{
+	display: block;
 }
 
 .recipe_list.standard li img
 {
-	border-top-left-radius: 1px;
-	border-top-right-radius: 1px;
+	width: 100%;
 }
 
 .recipe_list.standard li a
@@ -27,7 +37,8 @@
 
 .recipe_list.standard li .text
 {
-	padding: 5px;
+	padding: 5%;
+	height: 100px;
 }
 
 .recipe_list.standard li .ingredients
@@ -36,32 +47,7 @@
 	font-size: 12px;
 }
 
-.recipe_list.standard li:hover
-{
-	cursor: pointer;
-	background: white;
-	box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.2);
-	margin-top: -5px;
-	margin-left: -5px;
-	margin-bottom: -25px;
-	margin-right: -25px;
-	width: 300px;
-	height: 250px;
-	z-index: 100;
-	position: relative;
-}
-
-.recipe_list.standard li:hover img
-{
-	width: 300px;
-}
-
-.recipe_list.standard li:hover .text
-{
-	padding-left: 20px;
-	padding-right: 20px;
-}
-
+/*
 .recipe_list.vertical_minimized
 {
 	list-style-type: none;
@@ -123,4 +109,4 @@
 }
 
 
-
+*/

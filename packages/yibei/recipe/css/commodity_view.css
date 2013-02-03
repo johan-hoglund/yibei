@@ -9,11 +9,6 @@
 
 .commodity_view .head .short_description
 {
-	float: left;
-	width: 500px;
-	-moz-column-count:2; /* Firefox */
-	-webkit-column-count:2; /* Safari and Chrome */
-	column-count:2;
 }
 
 

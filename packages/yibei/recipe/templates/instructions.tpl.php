@@ -1,23 +1,20 @@
-<div class="recipe_full<?php echo isset($recipe) ? null : ' create'; ?>">
+<div class="recipe_full<?php echo isset($recipe) ? '' : ' create'; ?> col_9_wrapper page">
 	<form method="post" action="/recept/spara">
 		<?php if(isset($recipe)) : ?>
 			<input type="hidden" name="parent_recipe" value="<?php echo $recipe->get('id'); ?>" />
 			<input type="hidden" name="edit_mode" value="vary" />
 		<?php endif; ?>
-		<?php if(isset($recipe) && $bg = $recipe->get('top_bg')) : ?>
-			<header style="background: url('<?php echo $bg->image_url(array('w' => 750)); ?>');">
-		<?php else : ?>
-			<header>
-		<?php endif; ?>
-			<div class="title">
+		<header>
+			<div class="title col_9">
 				<?php if(isset($recipe)) : ?>
 					<div class="view_field">
-						<span class="correct_control">Korrigera</span>
-						<span class="vary_control">Variera</span>
+						<span class="correct_control link">Korrigera</span>
+						<span class="vary_control link">Variera</span>
 					</div>
 				<?php endif; ?>
 				<div class="edit_field">
 					<input type="submit" value="Spara" class="button green" />
+					<button class="cancel_control button grey">Avbryt</button>
 				</div>
 				<?php if(isset($recipe)) : ?>
 					<h1 class="view_field"><?php echo $recipe->get('title'); ?></h1>
@@ -36,6 +33,11 @@
 				<input type="hidden" name="aspect_ratio" value="16:9" />
 				<div class="button">Byt bild</div>
 			</div>
+			<?php if(isset($recipe) && $bg = $recipe->get('top_bg')) : ?>
+				<div class="image">
+					<img src="<?php echo $bg->image_url(array('w' => 750)); ?>" />
+				</div>
+			<?php endif; ?>
 		</header>
 		<div class="guide">
 			<?php if(user::current()->is_anonymous()) : ?>
@@ -47,54 +49,20 @@
 					</p>
 				</div>
 			<?php endif; ?>
-			<div class="panel">
-				<div class="ingredients">
-					<h4>Ingredienser</h4>
-					<ul>
-						<?php if(isset($recipe)) : ?>
-							<?php foreach($recipe->get('Ingredients') AS $entry) : ?>
-								<li>
-									<div class="view_field">
-										<span class="shopping_list_add_item" data-id="<?php echo $entry->get('commodity')->get('id'); ?>" data-title="<?php echo $entry->get('commodity')->get('singular'); ?>">
-											<img src="/static/yibei_page/icons/shopping_cart.svg" height="15" />
-										</span>
-										<span class="amount">
-											<?php echo $entry->get_readable_amount(); ?>
-											<?php echo $entry->get('unit'); ?>
-										</span>
-										<span class="commodity">
-											<a href="<?php echo $entry->get('commodity')->get('url'); ?>">
-												<?php echo $entry->get('commodity')->get('singular'); ?>
-											</a>
-										</span>
-									</div>
-									<div class="edit_field">
-										<input type="text" name="amounts[]" value="<?php echo $entry->get('amount'); ?>" />
-										<?php echo $entry->unit_dropdown('units[]')->render(); ?>
-										<input type="text" name="commodities[]" value="<?php echo $entry->get('commodity')->get('singular'); ?>" />
-									</div>
-								</li>
-							<?php endforeach; ?>
-						<?php endif; ?>
-						<li class="edit_field">
-							<div>
-								<input type="text" name="amounts[]" />
-								<?php echo Ingredient::units_dropdown('units[]')->render(); ?>
-								<input type="text" name="commodities[]" />
-							</div>
-						</li>
-					</ul>
-				</div>
-				<div class="equipment">
+			
+			<div class="description col_9">
+				<?php if(isset($recipe)) : ?>
 					<div class="view_field">
-						<h4>Utrustning</h4>
+						<p class="multicolumn"><?php echo $recipe->get('description'); ?></p>
 					</div>
-					<div class="edit_field">
-						<h4>Utrustning</h4>
-					</div>
+				<?php endif; ?>
+				<div class="edit_field">
+					<label>Beskrivning</label>
+					<textarea name="description"></textarea>
 				</div>
 			</div>
-			<div class="instructions">
+
+			<div class="instructions col_6">
 				<h3>Gör så här</h3>
 				<ol class="preparation_steps">
 					<?php if(isset($recipe)) : ?>
@@ -113,6 +81,62 @@
 						<textarea name="preparation_steps[]"></textarea>
 					</li>
 				</ol>
+			</div>
+
+			<div class="panel col_3">
+				<h4>Ingredienser</h4>
+				<div class="RecipeIngredientLists">
+					<?php if(isset($recipe)) : ?>
+						<?php foreach($recipe->ingredientLists() AS $list) : ?>
+							<?php echo $list->render(); ?>
+						<?php endforeach; ?>
+					<?php endif; ?>
+				</div>
+				<div class="RecipeIngredientListTemplate">
+					<?php echo RecipeIngredientList::render_template(); ?>
+				</div>
+				<span class="addRecipeIngredientListControl edit_field link">+ Ingredienslista</span>
+				
+				
+				<div class="ingredients edit_field">
+					<h4>Gammal ingredienslista</h4>
+					<ul>
+						<?php if(isset($recipe)) : ?>
+							<?php foreach($recipe->get('Ingredients') AS $entry) : ?>
+								<li>
+									<span class="shopping_list_add_item" data-amount="<?php echo $entry->get('amount'); ?>" data-unit="<?php echo $entry->get('unit'); ?>" data-readable-amount="<?php echo $entry->get('readable_amount'); ?>" data-id="<?php echo $entry->get('commodity')->get('id'); ?>" data-title="<?php echo $entry->get('commodity')->get('singular'); ?>">
+										<img src="/static/yibei_page/icons/shopping_cart.svg" height="15" />
+									</span>
+									<span class="amount">
+										<?php echo $entry->get_readable_amount(); ?>
+										<?php echo $entry->get('unit'); ?>
+									</span>
+									<span class="commodity">
+										<a href="<?php echo $entry->get('commodity')->get('url'); ?>">
+											<?php echo $entry->get('commodity')->get('singular'); ?>
+										</a>
+									</span>
+								</li>
+							<?php endforeach; ?>
+						<?php endif; ?>
+						<li class="edit_field">
+							<div>
+								<input type="text" name="amounts[]" />
+								<?php echo Ingredient::units_dropdown('units[]')->render(); ?>
+								<input type="text" name="commodities[]" />
+							</div>
+						</li>
+					</ul>
+					<span class="shopping_list_add_all_control link">Allt till inköpslistan</span>
+				</div>
+				<div class="equipment">
+					<div class="view_field">
+						<h4>Utrustning</h4>
+					</div>
+					<div class="edit_field">
+						<h4>Utrustning</h4>
+					</div>
+				</div>
 			</div>
 			<br style="clear: both;" />
 		</div>

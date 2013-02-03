@@ -183,8 +183,13 @@
 				{
 					debug::log('ID not set');
 				}
-				$query = 'INSERT INTO ' . static::$db_name . ' SET';
+				$query = 'INSERT INTO ' . static::$db_name . ' SET ID = null';
+				if(count(static::$fields) > 0)
+				{
+					$query .= ',';
+				}
 			}
+
 
 			for($i = 0; $i < count(static::$fields); $i++)
 			{
@@ -214,7 +219,7 @@
 			if(!mysql_query($query))
 			{
 				echo $query . '<br />';
-				throw new Exception('Database error while saving: ' . mysql_error());
+				throw new Exception('Database error while saving: ' . mysql_error() . ' ' . $query);
 			}
 			if(!isset($this->id) || $this->id == 0)
 			{

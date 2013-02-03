@@ -34,9 +34,32 @@
 	font-size: 11px;
 }
 
+.ShoppingList ul li.removed
+{
+	color: #ababab;
+	font-size: 11px;
+	text-decoration: line-through;
+}
+
+.ShoppingList ul li.removed a
+{
+	color: #ababab;
+	text-decoration: none;
+}
+
 
 .ShoppingList ul li.checked input[type="checkbox"]
 {
 	opacity: 0.5;
 }
+
+.ShoppingList ul li .remove_control
+{
+	color: red;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+
+
 

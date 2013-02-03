@@ -1,53 +1,13 @@
-.recipe_full
-{
-	width: 750px;
-	border-top-left-radius: 5px;
-	border-top-right-radius: 5px;
-	box-shadow: 0px 0px 17px rgba(0, 0, 0, 0.2);
-	border: 1px solid rgba(255, 255, 255, 0.5);
-	font-family: 'Open Sans', sans-serif;
-	float: left;
-}
-
 .recipe_full:not(.create) .edit_field
 {
 	display: none;
 }
 
-
-
-.recipe_full header
-{
-	height: 421px;
-	clear: both;
-	display: block;
-	background: #cbcbcb;
-	border-top-left-radius: 5px;
-	border-top-right-radius: 5px;
-	position: relative;
-	padding-top: 1px;
-}
-
-.recipe_full header .title h1
-{
-	margin-top: 0px;
-	margin-bottom: 0px;
-	font-family: 'Doppio One', serif;
-	font-weight: normal;
-	font-size: 30px;
-}
-
-
 .recipe_full header .title input[type="text"]
 {
-	border-radius: 2px;
-	text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.6);
 	font-size: 2em;
-	background: rgba(0, 0, 0, 0.2);
-	border: 1px solid rgba(255, 255, 255, 0.3);
-	color: white;
-	font-weight: bold;
 	padding: 2px;
+	background: #fffbda;
 }
 
 .recipe_full header .title input[type="submit"]
@@ -55,18 +15,6 @@
 	float: right;
 }
 
-.recipe_full header .title
-{
-	text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.6);
-	color: white;
-	padding: 5px;
-	background: rgba(0, 0, 0, 0.25);
-	border-top-left-radius: 5px;
-	border-top-right-radius: 5px;
-	border-bottom: none;
-	margin-left: 1px;
-	margin-right: 1px;
-}
 
 .recipe_full header .background_control
 {
@@ -77,38 +25,28 @@
 
 .recipe_full .title .vary_control, .recipe_full .title .correct_control
 {
-	color: rgba(255, 255, 255, 0.6);
 	float: right;
-	margin-right: 10px;
-	font-size: 11px;
-	line-height: 40px;
-	text-decoration: underline;
+	margin-left: 10px;
 }
 
-.recipe_full .title .vary_control:hover, .recipe_full .title .correct_control:hover
+.recipe_full header .image img
 {
-	color: white;
-	cursor: pointer;
+	width: 100%;
 }
 
 .recipe_full .guide
 {
 	background: rgba(255, 255, 255, 0.7);
-	padding: 15px;
-	border: 1px solid #dbdbdb;
 	border-top: none;
 	font-size: 16px;
 }
 
 .recipe_full .panel
 {
-	float: right;
 }
 
 .recipe_full .ingredients
 {
-	padding: 5px;
-	margin-left: 10px;
 	<?php echo page_css::background('#f8f2d6', '#f9edc9'); ?>
 	box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
 	border: 1px solid white;
@@ -141,18 +79,18 @@
 
 .recipe_full .preparation_steps
 {
-	padding-left: 40px;
-	width: 380px;
 	font-size: 30px;
 }
 
 .recipe_full .preparation_steps li
 {
+	padding-top: 0;
 	margin-bottom: 20px;
 }
 
 .recipe_full .preparation_steps div
 {
+	padding-top: 0;
 	font-size: 14px;
 }
 

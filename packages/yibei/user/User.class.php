@@ -19,6 +19,11 @@
 		{
 			unset($_SESSION['user_id']);
 		}
+
+		public function render_navbar_entry()
+		{
+			return template('navbar_entry', array('user' => $this));
+		}
 	
 		public function save()
 		{
@@ -78,9 +83,23 @@
 			setcookie('yibei_persistent_token', $current->persistent_token(), time()+86400*365, '/', null, false, true);
 		}
 
+		public function facebook_connected()
+		{
+			return !$this->is_anonymous();
+		}
+
 		public function is_anonymous()
 		{
 			return $this->class == 'anonymous';
+		}
+
+		public function get_displayname()
+		{
+			if(!isset($this->displayname))
+			{
+				return 'Gäst';
+			}
+			return $this->displayname;
 		}
 
 		public function small_profile($options = array())

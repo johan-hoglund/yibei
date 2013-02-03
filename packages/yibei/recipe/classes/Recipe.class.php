@@ -1,8 +1,8 @@
 <?php
-	class yibei_recipe extends fetcher
+	class Recipe extends fetcher
 	{
-		public static $fields = array('handle', 'title', 'top_bg', 'primary', 'user_id');
-		public static $db_name = 'Recipies';
+		public static $fields = array('handle', 'title', 'top_bg', 'primary', 'user_id', 'description');
+		public static $db_name = 'Recipes';
 
 		public function __clone()
 		{
@@ -16,11 +16,73 @@
 			parent::save();
 		}
 
+		public function ingredientLists()
+		{
+			return RecipeIngredientList::fetch(array('recipe_id' => $this->id));
+		}
+
+		public function toSolr()
+		{
+			$ch = curl_init();
+
+			$fields = array();
+			$fields['title'] = $this->title;
+			$fields['id'] = $this->id;
+			$fields['instructions'] = array();
+			foreach($this->get('preparation_steps') AS $step)
+			{
+				$fields['instructions'][] = $step->get('text')->html_safe();
+			}
+
+			$fields['ingredients'] = array();
+			foreach($this->get('Ingredients') AS $ingredient)
+			{
+				$fields['ingredients'][] = $ingredient->get('commodity')->get('singular');
+				$fields['ingredients'][] = $ingredient->get('commodity')->get('plural');
+			}
+
+			$q = array();
+			$q[] = $fields;
+
+			$json = json_encode($q);
+
+			debug::log($json);
+
+			curl_setopt($ch, CURLOPT_URL, 'http://localhost:8983/solr/update/json?commit=true&wt=json');
+			curl_setopt($ch, CURLOPT_POST, true);
+			curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-type: application/json'));
+			curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+			$result = curl_exec($ch);
+
+			debug::log($result);
+		}
+
 		public static function fetch($options = array())
 		{
 			if(!isset($options['allow_nonprimary']) && !isset($options['id']))
 			{
 				$options['primary'] = 1;
+			}
+			
+			if(isset($options['solr_search']))
+			{
+				$solrJson = file_get_contents('http://localhost:8983/solr/collection1/select/?&q=*' . $options['solr_search'] . '*&fl=id&wt=json');
+				$solrResult = json_decode($solrJson);
+				if($solrResult->response->numFound > 0)
+				{
+					$options['id'] = isset($options['id']) ? $options['id'] : array();
+					$options['id'] = is_array($options['id']) ? $options['id'] : array($options['id']);
+					foreach($solrResult->response->docs AS $doc)
+					{
+						$options['id'][] = $doc->id;
+					}
+				}
+				else
+				{
+					return array();
+				}
 			}
 
 			return parent::fetch($options);
@@ -118,6 +180,11 @@
 			$tpl = array();
 			$tpl['recipes'] = $recipes;
 			$tpl['mode'] = isset($options['mode']) ? $options['mode'] : 'standard';
+			if(isset($options['columns']))
+			{
+				$tpl['columns'] = $options['columns'];
+				$tpl['fixed'] = true;
+			}
 			return template('list_recipes', $tpl);
 		}
 
@@ -128,6 +195,7 @@
 
 		public function data_from_post($p)
 		{
+			debug::log($p);
 			if(isset($p['title']))
 			{
 				$this->title = $p['title'];
@@ -152,12 +220,6 @@
 				$step->delete();
 			}
 
-			foreach($this->get('ingredients') AS $ingredient)
-			{
-				$ingredient->delete();
-			}
-
-
 			for($i = 0; isset($p['preparation_steps'][$i]); $i++)
 			{
 				if(strlen($p['preparation_steps'][$i]) > 0)
@@ -177,6 +239,35 @@
 				}
 			}
 
+			debug::log($p);
+			$i = 0;
+			foreach($p['RecipeIngredientLists'] AS $list)
+			{
+				$ilist = new IngredientList();
+				$ilist->save();
+
+				for($j = 0; isset($list['commodities'][$j]) && strlen($list['commodities'][$j]) > 0; $j++)
+				{
+					$listmember = new IngredientListMember();
+					$listmember->set('list_id', $ilist->get('id'));
+					$listmember->set('commodity_id', Commodity::get_by_name($list['commodities'][$j])->get('id'));
+					$listmember->set('amount', $list['amounts'][$j]);
+					$listmember->set('unit', $list['units'][$j]);
+					$listmember->save();
+				}
+
+				$rlist = new RecipeIngredientList();
+				$rlist->set('recipe_id', $this->id);
+				$rlist->set('list_id', $ilist->get('id'));
+				$rlist->set('order', $i);
+				$rlist->set('label', $list['label']);
+				$rlist->save();
+
+				$i++;
+			}
+
+			$this->description = $p['description'];
+/*
 			for($i = 0; isset($p['commodities'][$i]); $i++)
 			{
 				if(strlen($p['commodities'][$i]) > 0)
@@ -198,5 +289,7 @@
 					$ri->save();
 				}
 			}
+*/	
+			
 		}
 	}

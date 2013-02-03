@@ -9,9 +9,9 @@
 
 		public function execute($uri)
 		{
-			$recipes = yibei_recipe::fetch();
-			$this->heading = 'Yibeis recept';
-			$this->main_content = yibei_recipe::render_list($recipes);
+			$recipes = Recipe::fetch();
+			$this->main_content .= '<h1 class="col_12">Yibeis receptsajt</h1>';
+			$this->main_content .= Recipe::render_list($recipes);
 		}
 	}
 

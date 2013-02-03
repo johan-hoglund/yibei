@@ -4,6 +4,16 @@
 		public static $fields = array('user_id', 'commodity_id', 'amount', 'unit', 'added_at', 'status');
 		protected static $db_name = 'ShoppingListEntries';
 
+		public function db_encode_user_id()
+		{
+			return $this->user->get('id');
+		}
+
+		public function db_decode_user_id($data)
+		{
+			$this->user = User::lazy_from_id($data);
+		}
+
 		public function db_encode_added_at()
 		{
 			if(!isset($this->added_at))
