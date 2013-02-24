@@ -12,14 +12,17 @@ $(window).on('newdimensions', function() {
 	{
 		case 'narrow':
 			$('.recipe_list.standard:not(.fixed) li').addClass('col_4');
+			$('.recipe_list.standard img').height(((col_4-2)/16)*9);
 			break;
 		case 'normal':
 			$('.recipe_list.standard:not(.fixed) li').addClass('col_3');
+			$('.recipe_list.standard img').height(((col_3-2)/16)*9);
 			break;
 		default:
 			$('.recipe_list.standard:not(.fixed) li').addClass('col_2');	
+			$('.recipe_list.standard img').height(((col_2-2)/16)*9);
 	}
-	console.log(layout_mode);
+
 
 });
 

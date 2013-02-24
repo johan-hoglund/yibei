@@ -7,50 +7,64 @@ var col_1, col_2, col_3, col_4, col_5, col_6, col_7, col_8, col_9, col_10, col_1
 
 $(window).resize(function() {
 	var w = $(window).width();
-			
-	var problem = 'Maximize \n'
-				+ 'obj: +12 x + 13 y \n'
-				+ 'Subject To \n'
-				+ 'colwidth: x -2y >= 0 \n'
-				+ 'colwidth2: 4y - x >= 0 \n'
-				+ 'equality: 2z + 12x + 13y = ' + w + ' \n'
-				+ 'Bounds \n'
-				+ 'x >= 0 \n'
-				+ 'y >= 0 \n'
-				+ 'z >= 0 \n'
-				+ 'General \n'
-				+ 'x y z \n'
-				+ 'End';
+	
+	// NOTE: This requires native Float64Array() on client, we should revert to a lookup-table if it doesn't exist
+	try
+	{
+		var problem = 'Maximize \n'
+					+ 'obj: +12 x + 13 y \n'
+					+ 'Subject To \n'
+					+ 'colwidth: x -2y >= 0 \n'
+					+ 'colwidth2: 4y - x >= 0 \n'
+					+ 'equality: 2z + 12x + 13y = ' + w + ' \n'
+					+ 'Bounds \n'
+					+ 'x >= 0 \n'
+					+ 'y >= 0 \n'
+					+ 'z >= 0 \n'
+					+ 'General \n'
+					+ 'x y z \n'
+					+ 'End';
 
-	var lp = glp_create_prob();
-	glp_read_lp_from_string(lp, null, problem);
+		var lp = glp_create_prob();
+		glp_read_lp_from_string(lp, null, problem);
 
-	glp_scale_prob(lp, GLP_SF_AUTO);
+		glp_scale_prob(lp, GLP_SF_AUTO);
 
-	var smcp = new SMCP({presolve: GLP_ON});
-	glp_simplex(lp, smcp);
+		var smcp = new SMCP({presolve: GLP_ON});
+		glp_simplex(lp, smcp);
 
-	var iocp = new IOCP({presolve: GLP_ON});
-	glp_intopt(lp, iocp);
+		var iocp = new IOCP({presolve: GLP_ON});
+		glp_intopt(lp, iocp);
 
-	for(var i = 1; i <= glp_get_num_cols(lp); i++){
-		switch(glp_get_col_name(lp, i))
-		{
-			case 'x':
-				layout_col = glp_mip_col_val(lp, i);
-				break;
-			case 'y':
-				layout_pad = glp_mip_col_val(lp, i);
-				break;
-			case 'z':
-				layout_marg = glp_mip_col_val(lp, i);
-				break;
+		for(var i = 1; i <= glp_get_num_cols(lp); i++){
+			switch(glp_get_col_name(lp, i))
+			{
+				case 'x':
+					layout_col = glp_mip_col_val(lp, i);
+					break;
+				case 'y':
+					layout_pad = glp_mip_col_val(lp, i);
+					break;
+				case 'z':
+					layout_marg = glp_mip_col_val(lp, i);
+					break;
+			}
 		}
+	} 
+	catch(err)
+	{
+		console.log(err);
+		layout_pad = 20;
+		layout_col = 60;
+		layout_marg = 0;
 	}
 
+/*
+	console.log(w);
 	console.log('col: ' + layout_col);
 	console.log('pad: ' + layout_pad);
 	console.log('marg: ' + layout_marg);
+*/
 
 	col_1  = 1 * layout_col + 0 * layout_pad;
 	col_2  = 2 * layout_col + 1 * layout_pad;
@@ -117,14 +131,20 @@ $(window).resize(function() {
 		layout_mode = 'narrow';
 	}
 
+	$('body').removeClass('wide normal narrow');
+	$('body').addClass(layout_mode);
+
+
+	//console.log(w + ': ' + layout_mode);
 
 	$(window).trigger('newdimensions');
-
 
 });
 
 $('document').ready(function() {
-	$(window).resize();
+	// For some reason, this needs to be done twice
+	$(window).trigger('resize');
+	$(window).trigger('resize');
 });
 
 

@@ -1,0 +1,10 @@
+@media print
+{
+	.user_profile_small
+	{
+		display: none;
+	}
+}
+
+
+

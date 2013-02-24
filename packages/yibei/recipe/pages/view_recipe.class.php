@@ -30,7 +30,9 @@
 			{
 				throw new NotFoundException();
 			}
-		
+	
+			$this->main_classes[] = 'view_recipe';
+
 			$same_author_recipes = Recipe::fetch(array('user' => $recipe->get('user'), 'limit' => 4));
 			$list_html = Recipe::render_list($same_author_recipes, array('columns' => 3));
 			$this->main_content = $recipe->get('user')->small_profile(array('extra_html' => $list_html));

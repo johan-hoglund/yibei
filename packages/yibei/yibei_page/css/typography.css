@@ -9,7 +9,14 @@ body
 {
 	font-family: 'Noticia Text', georgia, sans-serif;
 	font-size: 14px;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
 }
+
+body.narrow
+{
+}
+
 
 h1, h2, h3, .heading
 {
@@ -38,11 +45,22 @@ h2
 	font-size: 30px;
 }
 
+body.narrow h2
+{
+	font-size: 20px;
+}
+
 h1
 {
 	font-size: 40px;
 	border-bottom: 1px dotted #dcdcdc;
 }
+
+body.narrow h1
+{
+	font-size: 30px;
+}
+
 
 .interface
 {

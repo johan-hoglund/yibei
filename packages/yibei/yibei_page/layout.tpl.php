@@ -11,6 +11,11 @@
     });
 
     // Additional init code here
+	FB.getLoginStatus(function(response) {
+		if($('.fb_login_control')) {
+			$('.fb_login_control').trigger('click');
+		}
+	});
 
   };
 
@@ -24,6 +29,8 @@
    }(document));
 </script>
 
+<div style="color: white; text-shadow: 0px 0px 4px black; font-family: monospace; position: absolute; top: 0px; width: 100%; background: rgba(125, 0, 0, 0.5);" id="debug">
+</div>
 
 <header id="top_nav" class="interface clearfix">
 	<div class="recipe_search_control disabled">
@@ -127,16 +134,11 @@
 		<ul class="clearfix">
 			<li class="col_1">
 				<a href="/">
+					<img src="/static/yibei_page/icons/home.svg" />
 					<span class="label">Start</span>
 				</a>
 			</li>
-			<li class="cook">
-				<a href="/">
-					<img src="/static/yibei_page/icons/home.svg" width="40" height="40" />
-					<span class="label">Laga</span>	
-				</a>
-			</li>
-			<li class="shopping_list">
+			<li class="shopping_list col_1">
 				<div class="list_preview">
 					<ul>
 					</ul>
@@ -148,23 +150,23 @@
 					<?php else : ?>
 						<span class="count empty">0</span>
 					<?php endif; ?>
-					<img src="/static/yibei_page/icons/list.svg" width="40" height="40" />
+					<img src="/static/yibei_page/icons/list.svg" />
 					<span class="label">Handla</span>
 				</a>
 			</li>
-			<li>
+			<li class="col_3 searchbox">
 				<input type="search" placeholder="Sök" />
 			</li>
-			<li>
+			<li class="col_1">
 				<a href="/recept/skapa">Nytt recept</a>
 			</li>
-			<li class="user">
+			<li class="user col_3">
 				<?php echo User::current()->render_navbar_entry(); ?>
 			</li>
 		</ul>
 	</nav>
 </header>
-<div class="main">
+<div class="main<?php echo (count($main_classes) > 0) ? ' ' . implode(' ', $main_classes) : ''; ?>">
 	<?php echo $main_content; ?>
 </div>
 <div style="clear: both; height: 400px;" />

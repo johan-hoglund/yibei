@@ -23,6 +23,11 @@
 			return $this->added_at->format('Y-m-d H:i:s');
 		}
 
+		public function set_user($user)
+		{
+			$this->user = $user;
+		}
+
 		public function get_status()
 		{
 			if(!isset($this->status))

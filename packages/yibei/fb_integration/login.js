@@ -1,6 +1,10 @@
+
+
 $(document).ready(function() {
 	$('.fb_login_control').click(function() {
+
 		FB.getLoginStatus(function(response) {
+			console.log('Status received');
 			if (response.status === 'connected') {
 				console.log('User logged in');
 				$.getJSON('/fb_auth_callback.json?signed=' + response.authResponse.signedRequest, function(data) {
@@ -21,6 +25,9 @@ $(document).ready(function() {
 		console.log('FB login triggered');
 		return false;
 	});
+
+
+
 });
 
 function fb_login()

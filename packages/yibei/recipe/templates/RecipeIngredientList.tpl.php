@@ -33,7 +33,14 @@
 						</td>
 						<td>
 							<input class="edit_field"  type="text" name="RecipeIngredientLists[<?php echo $list->get('id'); ?>][commodities][]" value="<?php echo $member->get('commodity')->get('plural'); ?>">
-							<span class="view_field"><?php echo $member->get('commodity')->get('plural'); ?></span>
+							<span class="view_field">
+								<a href="<?php echo $member->get('commodity')->get('url'); ?>">
+									<?php echo $member->get('commodity')->get('plural'); ?>
+								</a>
+							</span>
+						</td>
+						<td class="shopping_list_add_item" data-amount="<?php echo $member->get('amount'); ?>" data-unit="<?php echo $member->get('unit'); ?>" data-readable-amount="<?php echo $member->get('readable_amount'); ?>" data-id="<?php echo $member->get('commodity')->get('id'); ?>" data-title="<?php echo $member->get('commodity')->get('plural'); ?>">
+							<img src="/static/yibei_page/icons/shopping_cart.svg" />
 						</td>
 					</tr>
 				<?php endforeach; ?>

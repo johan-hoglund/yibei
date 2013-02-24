@@ -29,4 +29,18 @@ $(document).ready(function() {
 
 });
 
+$(window).on('newdimensions', function() {
 
+	
+	$('#top_nav .avatar').removeClass('col_2 col_1');
+	if(layout_mode == 'narrow')
+	{
+		$('#top_nav .avatar').addClass('col_2');
+		$('#top_nav .userinfo').hide();
+	}
+	else
+	{
+		$('#top_nav .avatar').addClass('col_1');
+		$('#top_nav .userinfo').show();
+	}
+});

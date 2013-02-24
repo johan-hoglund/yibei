@@ -97,6 +97,9 @@
 				</div>
 				<span class="addRecipeIngredientListControl edit_field link">+ Ingredienslista</span>
 				
+				<div>
+					<button class="print_control">Print</button>
+				</div>
 				
 				<div class="ingredients edit_field">
 					<h4>Gammal ingredienslista</h4>
@@ -128,14 +131,6 @@
 						</li>
 					</ul>
 					<span class="shopping_list_add_all_control link">Allt till inköpslistan</span>
-				</div>
-				<div class="equipment">
-					<div class="view_field">
-						<h4>Utrustning</h4>
-					</div>
-					<div class="edit_field">
-						<h4>Utrustning</h4>
-					</div>
 				</div>
 			</div>
 			<br style="clear: both;" />

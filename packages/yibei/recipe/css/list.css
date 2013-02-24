@@ -39,6 +39,13 @@
 {
 	padding: 5%;
 	height: 110px;
+	overflow: hidden;
+}
+
+
+body.narrow .recipe_list.standard li .text
+{
+	height: 80px;
 }
 
 .recipe_list.standard li .ingredients

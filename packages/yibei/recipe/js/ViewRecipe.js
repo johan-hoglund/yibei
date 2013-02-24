@@ -1,4 +1,5 @@
 $(window).on('newdimensions', function() {
+	$('.recipe_full').removeClass('col_9_wrapper col_12_wrapper');	
 	$('.recipe_full header .image').removeClass('col_6 col_9 col_12');	
 	$('.recipe_full .description').removeClass('col_3 col_9 col_12');	
 
@@ -8,6 +9,7 @@ $(window).on('newdimensions', function() {
 	{
 		$('.user_profile_small').show(250);
 		
+		$('.recipe_full').addClass('col_9_wrapper');	
 		$('.recipe_full header .image').addClass('col_6');
 		$('.recipe_full .description').addClass('col_3');
 	}
@@ -15,12 +17,16 @@ $(window).on('newdimensions', function() {
 	{
 		$('.user_profile_small').show(250);
 		
+		$('.recipe_full').addClass('col_9_wrapper');	
 		$('.recipe_full header .image').addClass('col_9');
 		$('.recipe_full .description').addClass('col_9');
 	}
 	else
 	{
 		$('.user_profile_small').hide(250);
+
+
+		$('.recipe_full').addClass('col_12_wrapper');	
 		$('.recipe_full header .image').addClass('col_12');
 		$('.recipe_full .description').addClass('col_12');
 	}

@@ -1,6 +1,7 @@
 .col_1, .col_2, .col_3, .col_4, .col_5, .col_6, .col_7, .col_8, .col_9, .col_10, .col_11, .col_12
 {
 	float: left;
+	display: block;
 }
 
 .col_1_wrapper, .col_2_wrapper, .col_3_wrapper, .col_4_wrapper, .col_5_wrapper, .col_6_wrapper, .col_7_wrapper, .col_8_wrapper, .col_9_wrapper, .col_10_wrapper, .col_11_wrapper, .col_12_wrapper

@@ -68,7 +68,7 @@
 		public static function script_tag()
 		{
 			echo '<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>' . "\n";
-			echo '<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/jquery-ui.min.js"></script>' . "\n";
+			echo '<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/jquery-ui.min.js"></script>' . "\n";
 			echo '<script type="text/javascript" src="/scripts.js"></script>' . "\n";
 		}
 		

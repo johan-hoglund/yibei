@@ -159,6 +159,22 @@
 			}
 			return $ingredients;
 		}
+
+		public function distinct_commodities($limit = 10)
+		{
+			$commodities = array();
+			foreach(RecipeIngredientList::fetch(array('recipe_id' => $this->id)) AS $list)
+			{
+				$inner_list = $list->get_ingredient_list();
+				debug::log(print_r($inner_list, true));
+				foreach($inner_list->members() AS $member)
+				{
+					$commodities[] = $member->get_commodity();
+				}
+			}
+
+			return $commodities;
+		}
 		
 		public function render_instructions()
 		{
@@ -267,29 +283,5 @@
 			}
 
 			$this->description = $p['description'];
-/*
-			for($i = 0; isset($p['commodities'][$i]); $i++)
-			{
-				if(strlen($p['commodities'][$i]) > 0)
-				{
-					$commodity = Commodity::get_by_name($p['commodities'][$i]);
-
-					if(!$ingredient = Ingredient::fetch_single(array('amount' => $p['amounts'][$i], 'unit' => $p['units'][$i], 'commodity_id' => $commodity->get('id'))))
-					{
-						$ingredient = new Ingredient();
-						$ingredient->set('amount', $p['amounts'][$i]);
-						$ingredient->set('unit', $p['units'][$i]);
-						$ingredient->set('commodity_id', $commodity->get('id'));
-						$ingredient->save();
-					}
-
-					$ri = new RecipeIngredient();
-					$ri->set('recipe_id', $this->get('id'));
-					$ri->set('ingredient_id', $ingredient->get('id'));
-					$ri->save();
-				}
-			}
-*/	
-			
 		}
 	}

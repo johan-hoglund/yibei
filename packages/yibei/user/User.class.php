@@ -102,6 +102,11 @@
 			return $this->displayname;
 		}
 
+		public function get_avatar_small_url()
+		{
+			return $this->picture_url;
+		}
+
 		public function small_profile($options = array())
 		{
 			$options['user'] = $this;
